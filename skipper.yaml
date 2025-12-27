@@ -1,0 +1,46 @@
+# Skipper configuration for Rust development environment
+---
+# The build container that will be used for development
+build-container-image: learnix-os-build
+build-container-tag: latest
+
+# Dockerfile to use for building the container
+build-container-dockerfile: Dockerfile.build
+
+# Working directory inside the container
+workdir: /workspace
+
+# Mount the entire project directory
+volumes:
+  - .:/workspace
+
+# Environment variables
+env:
+  CARGO_HOME: /workspace/.cargo
+  RUST_BACKTRACE: "1"
+
+# Make targets or commands that can be run with skipper
+make:
+  build:
+    command: cargo build
+    description: Build the Rust project
+  
+  test:
+    command: cargo test
+    description: Run tests
+  
+  run:
+    command: cargo run
+    description: Run the application
+  
+  fmt:
+    command: cargo fmt
+    description: Format code
+  
+  clippy:
+    command: cargo clippy -- -D warnings
+    description: Run Clippy linter (treats warnings as errors)
+  
+  shell:
+    command: /bin/bash
+    description: Open an interactive shell in the container
