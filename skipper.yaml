@@ -38,8 +38,8 @@ make:
     description: Format code
   
   clippy:
-    command: cargo clippy
-    description: Run Clippy linter
+    command: cargo clippy -- -D warnings
+    description: Run Clippy linter (treats warnings as errors)
   
   shell:
     command: /bin/bash

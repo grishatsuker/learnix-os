@@ -18,7 +18,15 @@ This project uses [Skipper](https://github.com/stratoscale/skipper) for containe
    skipper build
    ```
 
-2. Run common development tasks:
+2. Initialize a new Rust project (if not already done):
+   ```bash
+   skipper make shell
+   # Inside the container:
+   cargo init .
+   exit
+   ```
+
+3. Run common development tasks:
    ```bash
    # Build the project
    skipper make build
